@@ -4,7 +4,7 @@
 import React, {PropTypes} from 'react';
 
 
-class MainComponent extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,4 +20,4 @@ class MainComponent extends React.Component {
 }
 
 
-export default MainComponent;
+export default Home;

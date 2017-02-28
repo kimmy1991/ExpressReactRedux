@@ -3,16 +3,16 @@
  */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {CounterActions} from './action';
+import {CounterActions} from '../../../actions/counter';
 
 
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
   }
 
   click(){
-    // this.props.router.push('/api');
+    // this.props.router.push('/test');
     console.log('cliekdfdfddsdfdsss', this.props);
     this.props.testClick();
   }
@@ -38,6 +38,6 @@ const mapStateToProps = (state) => {
   return state.counterApp;
 };
 
-const CounterApp = connect(mapStateToProps, mapDispatchToProps)(App);
+const CounterApp = connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 export default CounterApp;
