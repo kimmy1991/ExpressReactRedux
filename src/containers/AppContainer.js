@@ -1,12 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
-// import Counter from '../routes/counter/components/Counter'
 import {Provider} from 'react-redux';
 import store from '../store/store'
-// import Home from '../Home'
-// import AnotherComponent from '../routes/testcomponent/components/AnotherComponent'
 
-import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+import {Router, browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 
 import main from '../css/main.css';
