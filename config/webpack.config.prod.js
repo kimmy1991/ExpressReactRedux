@@ -2,10 +2,10 @@ module.exports = {
   entry: [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
-    './public/app.js'
+    './src/AppContainer.js'
   ],
   output: {
-    path: __dirname + '/public',
+    path: __dirname + '/src',
     filename: '/bundle.js'
   },
   module: {

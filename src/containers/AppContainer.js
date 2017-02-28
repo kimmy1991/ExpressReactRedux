@@ -1,15 +1,15 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Counter from './Counter'
+import Counter from '../Counter'
 import {Provider} from 'react-redux';
-import store from './store'
-import MainComponent from './MainComponent'
-import AnotherComponent from './AnotherComponent'
+import store from '../store/store'
+import MainComponent from '../MainComponent'
+import AnotherComponent from '../AnotherComponent'
 
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 
-import main from './css/main.css';
+import main from '../css/main.css';
 const history = syncHistoryWithStore(browserHistory, store);
 render(
   <Provider store={store}>
