@@ -54,13 +54,15 @@ app.get('/api', function (req, res, next) {
 
 
 app.post('/quotes', (req, res) => {
-  dbApi.addPosts(db, req.body)
+  dbApi.addPosts(req.body)
 });
 
 app.get('/quotes', (req, res) => {
-  db.collection('quotes').find().toArray(function (err, results) {
-    res.send(results);
-  })
+  dbApi.getPosts().then((posts)=>{
+    console.log('fdsfsdfsdf', posts);
+
+    res.send(posts);
+  });
 });
 
 app.get('*', function (req, res) {
