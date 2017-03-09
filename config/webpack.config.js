@@ -10,8 +10,8 @@ module.exports = {
   ],
   output: {
     path: '/',
-    publicPath: '/static/',
-    filename: '/bundle.js'
+    publicPath: '/static',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [

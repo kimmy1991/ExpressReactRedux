@@ -1,12 +1,18 @@
+var path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const PATHS = {
+  app: path.resolve(__dirname, '../src'),
+  dist: path.resolve(__dirname, '../static')
+};
+
 module.exports = {
-  entry: [
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client',
-    './src/AppContainer.js'
-  ],
+  entry: {
+    app: path.resolve(PATHS.app, 'containers/AppContainer.js')
+  },
   output: {
-    path: __dirname + '/src',
-    filename: '/bundle.js'
+    path: PATHS.dist,
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -16,8 +22,17 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader"})
+        // loader: ExtractTextPlugin.extract('style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]')
       }
     ]
   },
-  watch: true
+  plugins: [
+
+    // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
+    new ExtractTextPlugin("main.css")
+  ]
 };
