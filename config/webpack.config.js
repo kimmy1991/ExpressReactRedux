@@ -1,5 +1,11 @@
 var webpack = require('webpack');
+var path = require('path');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PATHS = {
+  app: path.resolve(__dirname, '/src'),
+  dist: path.resolve(__dirname, '/static')
+};
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -9,8 +15,8 @@ module.exports = {
     './src/containers/AppContainer.js'
   ],
   output: {
-    path: '/',
-    publicPath: '/static',
+    path: PATHS.dist,
+    publicPath: '/',
     filename: 'bundle.js'
   },
   module: {
