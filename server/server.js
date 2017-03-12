@@ -32,7 +32,7 @@ if (env === 'development') {
 }
 
 //Database
-// require('../config/database')();
+require('../config/database')();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -49,7 +49,7 @@ app.get('/api', function (req, res, next) {
 // app.post('/quotes', (req, res) => {
 //   dbApi.addPosts(req.body)
 // });
-
+//
 // app.get('/quotes', (req, res) => {
 //   dbApi.getPosts().then((posts)=>{
 //     console.log('fdsfsdfsdf', posts);
