@@ -6,8 +6,14 @@ var path = require('path');
 var bodyParser = require('body-parser');
 // import dbApi from '../src/api/dbApi.js';
 
-// var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
 var app = express();
+//NODE_ENV variable in package json is not used in aws we need to set the variable on the server itself
+if (env === 'development') {
+var webpackDevMiddleware = require('webpack-dev-middleware');
+
+}
+
 
 // if (env === 'development') {
 //   const config = require('./../config/webpack.config.js');
@@ -32,13 +38,13 @@ var app = express();
 //Database
 // require('../config/database')();
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 
-// if (env === 'production') {
+if (env === 'production') {
   app.use(express.static(__dirname + '/../static'));
-// }
+}
 
 app.get('/api', function (req, res, next) {
   res.send('hello');

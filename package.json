@@ -8,7 +8,7 @@
     "webpack": "webpack",
     "build": "webpack --config  config/webpack.config.prod.js",
     "dev": "babel-node ./server/server.js --presets es2015",
-    "start": "node ./server/server.js"
+    "start": "NODE_ENV=production node ./server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,7 +38,7 @@
     "extract-text-webpack-plugin": "^2.0.0",
     "nodemon": "^1.11.0",
     "style-loader": "^0.13.2",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.17.1"
+    "webpack-hot-middleware": "^2.17.1",
+    "webpack-dev-middleware": "^1.10.1"
   }
 }
