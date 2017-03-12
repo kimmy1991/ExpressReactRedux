@@ -1,7 +1,5 @@
 var express = require('express');
 var webpack = require('webpack');
-// var webpackDevMiddleware = require('webpack-dev-middleware');
-// var webpackHotMiddleware = require('webpack-hot-middleware');
 var path = require('path');
 var bodyParser = require('body-parser');
 // import dbApi from '../src/api/dbApi.js';
@@ -9,31 +7,29 @@ var bodyParser = require('body-parser');
 var env = process.env.NODE_ENV || 'development';
 var app = express();
 //NODE_ENV variable in package json is not used in aws we need to set the variable on the server itself
+
+
 if (env === 'development') {
-var webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const config = require('./../config/webpack.config.js');
+  const compiler = webpack(config);
 
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    contentBase: 'src',
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false
+    }
+  }));
+
+  app.use(webpackHotMiddleware(compiler));
 }
-
-
-// if (env === 'development') {
-//   const config = require('./../config/webpack.config.js');
-//   const compiler = webpack(config);
-//
-//   app.use(webpackDevMiddleware(compiler, {
-//     publicPath: config.output.publicPath,
-//     contentBase: 'src',
-//     stats: {
-//       colors: true,
-//       hash: false,
-//       timings: true,
-//       chunks: false,
-//       chunkModules: false,
-//       modules: false
-//     }
-//   }));
-//
-//   app.use(webpackHotMiddleware(compiler));
-// }
 
 //Database
 // require('../config/database')();
