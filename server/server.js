@@ -2,7 +2,7 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
-// import dbApi from '../src/api/dbApi.js';
+var dbApi = require('../src/api/dbApi.js');
 
 var env = process.env.NODE_ENV || 'development';
 var app = express();
@@ -45,18 +45,18 @@ if (env === 'production') {
 app.get('/api', function (req, res, next) {
   res.send('hello');
 });
-
+//
 // app.post('/quotes', (req, res) => {
 //   dbApi.addPosts(req.body)
 // });
 //
-// app.get('/quotes', (req, res) => {
-//   dbApi.getPosts().then((posts)=>{
-//     console.log('fdsfsdfsdf', posts);
-//
-//     res.send(posts);
-//   });
-// });
+app.get('/quotes', function (req, res) {
+  dbApi.getPosts().then(function (posts) {
+    console.log('fdsfsdfsdf', posts);
+
+    res.send(posts);
+  });
+});
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../static/index.html'));
