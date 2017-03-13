@@ -8,7 +8,7 @@ const PATHS = {
 };
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   entry: [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?reload=true',
@@ -30,7 +30,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({fallback:"style-loader", use:"css-loader"})
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          loader: 'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        })
+
+        //!resolve-url!postcss
+        // loaders: [
+        //   'style-loader?sourceMap',
+        //   'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+        // ]
+        // loader: ExtractTextPlugin.extract({fallback:"style-loader", use:"css-loader"})
         // loader: ExtractTextPlugin.extract('style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]')
       }
     ]
@@ -42,6 +52,6 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
     // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
-  new ExtractTextPlugin("main.css")
+    new ExtractTextPlugin("main.css")
   ]
 };

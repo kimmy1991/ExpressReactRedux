@@ -4,7 +4,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {CounterActions} from '../../../actions/counter';
-
+import styles from './counter.css';
 
 class Counter extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Counter extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.root}>
         <h1> hello redux </h1>
         <h2> Counter:{this.props.counter} </h2>
         <button onClick={()=>{this.click()}} > Click me</button>
