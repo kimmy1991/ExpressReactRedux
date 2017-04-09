@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register --require ignore-styles --require ./test/helpers.js --require ./test/dom.js --recursive ./src/**/*.spec.js",
     "webpack": "webpack",
     "build": "webpack --config  config/webpack.config.prod.js",
     "dev": "babel-node ./server/server.js --presets es2015",
@@ -34,11 +34,19 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.24.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.26.2",
+    "enzyme": "^2.3.0",
     "extract-text-webpack-plugin": "^2.0.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^9.3.0",
+    "mocha": "^2.5.3",
     "nodemon": "^1.11.0",
+    "react-addons-test-utils": "^15.4.2",
+    "sinon": "^1.17.4",
     "style-loader": "^0.13.2",
-    "webpack-hot-middleware": "^2.17.1",
-    "webpack-dev-middleware": "^1.10.1"
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.1"
   }
 }

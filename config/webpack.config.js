@@ -14,6 +14,12 @@ module.exports = {
     'webpack-hot-middleware/client?reload=true',
     './src/containers/AppContainer.js'
   ],
+  externals: {
+    'cheerio': 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
   output: {
     path: PATHS.dist,
     publicPath: '/',

@@ -6,14 +6,12 @@ import {connect} from 'react-redux';
 import {CounterActions} from '../../../actions/counter';
 import styles from './counter.css';
 
-class Counter extends React.Component {
+export class Counter extends React.Component {
   constructor(props) {
     super(props);
   }
 
   click(){
-    // this.props.router.push('/test');
-    console.log('cliekdfdfddsdfdsss', this.props);
     this.props.testClick();
   }
 
